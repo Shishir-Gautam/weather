@@ -1,142 +1,177 @@
-/* App.css */
-
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #e9ecef; /* Soft light grey background */
+/* General Reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+  height: 100%;
 }
 
 .App {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #ffffff; /* Clean white for the main container */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 1s ease-in-out;
+  color: white;
   text-align: center;
-  animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
 }
 
-/* Background classes based on weather */
+/* Backgrounds for different weather conditions */
+.default-background {
+  background: linear-gradient(to bottom, #1e3c72, #2a5298);
+}
+
 .clear-background {
-  background-color: #d1e7dd; /* Soft mint green for clear weather */
+  background: linear-gradient(to bottom, #00c6ff, #0072ff);
 }
 
 .cloudy-background {
-  background-color: #f5f5f5; /* Light grey for cloudy weather */
+  background: linear-gradient(to bottom, #485563, #29323c);
+}
+
+.rainy-background {
+  background: linear-gradient(to bottom, #3a7bd5, #3a6073);
+}
+
+.snowy-background {
+  background: linear-gradient(to bottom, #e6dada, #274046);
 }
 
 .night-background {
-  background-color: #343a40; /* Dark grey for night */
-  color: #ffffff; /* White text color */
+  background: linear-gradient(to bottom, #141e30, #243b55);
 }
 
-.default-background {
-  background-color: #ffffff; /* Default white background */
+.thunderstorm-background {
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
 }
 
-/* Weather app heading */
-h1 {
-  font-size: 2.5em;
-  color: #212529; /* Dark grey for headings */
-  margin-bottom: 30px;
+/* Title Styling */
+.app-title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  animation: fadeIn 2s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Form input styling */
-input[type="text"] {
-  width: 80%;
-  padding: 15px;
-  font-size: 1.2em;
-  border: 2px solid #ced4da; /* Light grey border */
-  border-radius: 8px;
-  margin-bottom: 20px;
-  transition: border-color 0.3s ease, transform 0.2s ease;
+/* Form Styling */
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-input[type="text"]:focus {
-  border-color: #198754; /* Green on focus */
-  outline: none;
-  transform: scale(1.05); /* Slightly enlarge on focus */
-}
-
-/* Button styling */
-button {
-  background-color: #198754; /* Green for buttons */
-  color: #ffffff; /* White text */
+.input-field {
+  width: 280px;
+  padding: 12px;
   border: none;
-  padding: 12px 30px;
-  font-size: 1em;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 5px;
-}
-
-button:hover {
-  background-color: #14532d; /* Darker green on hover */
-  transform: translateY(-3px); /* Lift effect on hover */
-}
-
-button:focus {
+  border-radius: 25px;
+  margin-right: 10px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
   outline: none;
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Suggestions dropdown styling */
-.suggestions {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
+.input-field:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-.suggestions li {
-  background-color: #f8f9fa; /* Light grey for suggestions */
-  border: 1px solid #ddd;
-  padding: 10px;
+.submit-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff6b6b;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
-.suggestions li:hover {
-  background-color: #e2e6ea; /* Slightly darker grey on hover */
-  transform: scale(1.02); /* Grow effect on hover */
+.submit-button:hover {
+  background: #ff4757;
+  transform: translateY(-2px);
 }
 
-/* Weather info container */
+/* Location Button */
+.location-button {
+  margin-top: 1rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ffa502;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.location-button:hover {
+  background: #eccc68;
+  transform: translateY(-2px);
+}
+
+/* Weather Info Section */
 .weather-info {
-  background-color: #f8f9fa; /* Light grey background */
+  text-align: center;
+  margin-top: 2rem;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  margin-top: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 350px;
+  animation: fadeInUp 1s ease-out;
+  transition: transform 0.3s ease;
 }
 
-.weather-info h2 {
-  margin-bottom: 20px;
-  color: #212529; /* Dark text */
+.weather-info:hover {
+  transform: translateY(-10px);
 }
 
-.weather-info p {
-  font-size: 1.1em;
-  margin: 10px 0;
-  color: #495057; /* Medium grey for text */
+.weather-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
-.weather-info img {
-  margin-top: 15px;
-  border-radius: 10px; /* Rounded corners for images */
+.weather-icon {
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+  animation: pulse 1.5s infinite;
 }
 
-/* Recent searches section */
+.weather-icon:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.weather-details p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Recent Searches */
 .recent-searches {
-  margin-top: 40px;
+  margin-top: 2rem;
+  color: white;
 }
 
 .recent-searches h3 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  color: #212529; /* Dark text */
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .recent-searches ul {
@@ -144,26 +179,87 @@ button:focus {
   padding: 0;
 }
 
-.recent-searches li {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+.recent-city {
   cursor: pointer;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 10px;
+  margin: 5px 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
-.recent-searches li:hover {
-  background-color: #f0f0f0; /* Light grey on hover */
-  transform: scale(1.02); /* Grow effect on hover */
+.recent-city:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
 }
 
-/* Keyframe for fade-in animation */
+/* Toggle Unit Button */
+.toggle-unit {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 25px;
+  background: #4cd137;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.toggle-unit:hover {
+  background: #44bd32;
+  transform: translateY(-2px);
+}
+
+.unit-indicator {
+  margin-top: 10px;
+  color: #f9f9f9;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Error & Loading Messages */
+.error-message,
+.loading-message {
+  margin-top: 1.5rem;
+  padding: 10px;
+  border-radius: 25px;
+  background: rgba(255, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+}
+
+/* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  .weather-info {
+    width: 90%;
   }
-  to {
-    opacity: 1;
+
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .input-field {
+    width: 200px;
+  }
+
+  .submit-button,
+  .location-button {
+    font-size: 0.9rem;
   }
 }
